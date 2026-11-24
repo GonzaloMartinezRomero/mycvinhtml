@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 · Gonzalo Martínez Romero</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Ctext x='9' y='45' font-family='monospace' font-size='34' font-weight='700' fill='%233fb950'%3E%3E_%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0f17;--surface:#111823;--surface-2:#172030;--border:#222d3e;--text:#e6edf3;--muted:#93a1b3;--faint:#5f6d80;--accent:#3fb950;--link:#58a6ff;--red:#f85149;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px 16px;background:var(--bg);color:var(--text);font:15px/1.7 'JetBrains Mono',ui-monospace,Consolas,monospace}
+.window{width:100%;max-width:640px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.28)}
+.bar{display:flex;gap:7px;align-items:center;padding:11px 14px;background:var(--surface-2);border-bottom:1px solid var(--border)}
+.bar i{width:11px;height:11px;border-radius:50%}
+.bar i:nth-child(1){background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar span{margin-left:8px;font-size:12px;color:var(--faint)}
+.body{padding:24px 22px}
+p{margin:0 0 6px}
+.u{color:var(--accent)}.p{color:var(--link)}.err{color:var(--red)}.muted{color:var(--muted)}
+#path{word-break:break-all}
+a{display:inline-block;margin-top:16px;padding:9px 14px;border-radius:9px;background:var(--accent);color:var(--bg);font-weight:700;text-decoration:none}
+a:hover{filter:brightness(1.08)}
+.cursor{display:inline-block;width:.6em;height:1.05em;vertical-align:-.15em;background:var(--accent);animation:b 1.1s steps(1) infinite}
+@keyframes b{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+</style>
+</head>
+<body>
+<main class="window">
+  <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>~/cv — admin</span></div>
+  <div class="body">
+    <p><span class="u">admin</span>:<span class="p">~</span>$ cd <span id="path">/pagina-desconocida</span></p>
+    <p class="err" id="msg">bash: cd: no existe la página (404)</p>
+    <p class="muted" id="hint">La página que buscas no está aquí.</p>
+    <p><span class="u">admin</span>:<span class="p">~</span>$ <span class="cursor" aria-hidden="true"></span></p>
+    <a href="/" id="home">cd ~ · volver al CV</a>
+  </div>
+</main>
+<script>
+(function(){
+  try{document.getElementById('path').textContent=decodeURIComponent(location.pathname);}catch(e){}
+  // En github.io sin dominio propio la web vive en /<repo>/: el enlace de vuelta apunta ahí.
+  if(/\.github\.io$/i.test(location.hostname)){var seg=location.pathname.split('/')[1];if(seg)document.getElementById('home').setAttribute('href','/'+seg+'/');}
+  var en=false;
+  try{var s=localStorage.getItem('cv-lang');en=s?s==='en':!/^es\b/i.test(navigator.language||'es');}catch(e){}
+  if(en){
+    document.documentElement.lang='en';
+    document.getElementById('msg').textContent='bash: cd: page not found (404)';
+    document.getElementById('hint').textContent="The page you're looking for isn't here.";
+    document.getElementById('home').textContent='cd ~ · back to the CV';
+  }
+})();
+</script>
+</body>
+</html>
