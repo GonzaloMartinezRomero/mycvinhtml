@@ -262,6 +262,41 @@ section{padding:44px 0 4px}
 .meter i{width:18px;height:10px;border-radius:2px;background:var(--surface-2);border:1px solid var(--border)}
 .meter i.on{background:var(--accent);border-color:var(--accent)}
 
+/* off-topic */
+.ot-intro{margin-bottom:16px}
+.ot-intro p{margin:0 0 10px;max-width:110ch}
+.ot-cmd{font:13px/1.5 var(--mono);color:var(--muted)}
+.ot-cmd .u{color:var(--accent)} .ot-cmd .p{color:var(--link)}
+.hobbies{padding:0;margin-top:12px}
+.gallery{display:grid;grid-template-columns:1fr;gap:10px}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface-2)}
+.gallery img{display:block;width:100%;height:auto;transition:transform .6s ease}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 12px;background:linear-gradient(to top,rgba(4,7,12,.88),rgba(4,7,12,0));color:#f0f3f6;font-size:14px;line-height:1.4}
+.gallery figcaption b{display:block;margin-bottom:3px;font:600 11.5px/1.2 var(--mono);color:#7ee787}
+.g-q{display:flex;flex-direction:column;justify-content:center;padding:20px}
+.g-q .ot-cmd{margin:0}
+.lessons{margin:8px 0 0;padding:0;list-style:none;font:14px/1.55 var(--mono)}
+.lessons li{position:relative;padding-left:18px;margin:6px 0}
+.lessons li::before{content:"›";position:absolute;left:2px;color:var(--accent)}
+.g-t img{object-position:50% 35%}
+.g-b img{object-position:50% 65%}
+.g-c img{object-position:50% 40%}
+@media (min-width:640px){
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(240px,auto);grid-auto-flow:dense}
+  .gallery img{position:absolute;inset:0;height:100%;object-fit:cover}
+  .g-a,.g-c{grid-row:span 2}
+  .g-t{grid-column:span 2}
+}
+@media (min-width:1000px){
+  .gallery{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(255px,auto)}
+  .g-a{grid-column:1;grid-row:1 / span 2}
+  .g-t{grid-column:2 / span 2;grid-row:1}
+  .g-c{grid-column:4;grid-row:1 / span 2}
+  .g-b{grid-column:2;grid-row:2}
+  .g-q{grid-column:3;grid-row:2}
+}
+
 /* contact / footer */
 .contact-card{padding:26px 20px;text-align:center}
 @media (min-width:720px){.contact-card{padding:34px}}
@@ -279,12 +314,12 @@ footer{padding:36px 0 40px;color:var(--faint);font:12.5px/1.6 var(--mono);text-a
 .boot.gone{opacity:0}
 .boot .spin{display:inline-block;width:1.4em;color:var(--accent)}
 .boot .dim{color:var(--faint)}
-.js-anim :is(.hero-out > :not(.boot),main section .sec-title,.pgroup-title,.sec-note,.prose p,.skill,.job,.ai-col,.filters,.project,.cert,.edu,.langs,.contact-card){
+.js-anim :is(.hero-out > :not(.boot),main section .sec-title,.pgroup-title,.sec-note,.prose p,.skill,.job,.ai-col,.filters,.project,.cert,.edu,.langs,.contact-card,.ot-intro,.gallery > *){
   opacity:0;translate:0 14px;
   transition:opacity .55s ease,translate .55s cubic-bezier(.2,.7,.2,1),transform .15s ease,border-color .15s ease;
 }
-.js-anim :is(.hero-out > :not(.boot),main section .sec-title,.pgroup-title,.sec-note,.prose p,.skill,.job,.ai-col,.filters,.project,.cert,.edu,.langs,.contact-card).in,
-.anim-done :is(.hero-out > :not(.boot),main section .sec-title,.pgroup-title,.sec-note,.prose p,.skill,.job,.ai-col,.filters,.project,.cert,.edu,.langs,.contact-card){opacity:1;translate:none}
+.js-anim :is(.hero-out > :not(.boot),main section .sec-title,.pgroup-title,.sec-note,.prose p,.skill,.job,.ai-col,.filters,.project,.cert,.edu,.langs,.contact-card,.ot-intro,.gallery > *).in,
+.anim-done :is(.hero-out > :not(.boot),main section .sec-title,.pgroup-title,.sec-note,.prose p,.skill,.job,.ai-col,.filters,.project,.cert,.edu,.langs,.contact-card,.ot-intro,.gallery > *){opacity:1;translate:none}
 
 /* print */
 @media print{
@@ -293,7 +328,7 @@ footer{padding:36px 0 40px;color:var(--faint);font:12.5px/1.6 var(--mono);text-a
   .topbar,.cta,.filters,.cursor,#contacto,.boot,.skip-hint{display:none!important}
   .js-anim *{opacity:1!important;translate:none!important}
   section{padding-top:18px}
-  .card,.job,.project,.cert{break-inside:avoid}
+  .card,.job,.project,.cert,.gallery > *{break-inside:avoid}
   .project[hidden]{display:flex!important}
   .pgroup[hidden]{display:block!important}
   .toast{display:none!important}
@@ -319,6 +354,7 @@ footer{padding:36px 0 40px;color:var(--faint);font:12.5px/1.6 var(--mono);text-a
         <li><a href="#ia"><span lang="es">ia</span><span lang="en">ai</span></a></li>
         <li><a href="#proyectos"><span lang="es">proyectos</span><span lang="en">projects</span></a></li>
         <li><a href="#formacion"><span lang="es">formación</span><span lang="en">education</span></a></li>
+        <li><a href="#offtopic">off-topic</a></li>
       </ul>
     </div>
     <div class="tools">
@@ -744,6 +780,42 @@ footer{padding:36px 0 40px;color:var(--faint);font:12.5px/1.6 var(--mono);text-a
     </div>
   </section>
 
+  <!-- ============ OFF-TOPIC ============ -->
+  <section id="offtopic">
+    <h2 class="sec-title"><span class="idx">08.</span> <span lang="es">Off-topic · lejos del teclado</span><span lang="en">Off-topic · away from the keyboard</span></h2>
+    <div class="ot-intro">
+      <p class="ot-cmd" aria-hidden="true"><span class="u">admin</span>:<span class="p">~</span>$ cd ~/aventuras &amp;&amp; ls</p>
+      <p><span lang="es">Cuando cierro el portátil, me voy a la montaña. Hago rutas de <strong>bikepacking</strong> de varios días con todo lo necesario en las alforjas, camino por encima de las nubes y, de vez en cuando, despego en <strong>ultraligero</strong>. Busco lo mismo que en el trabajo: planificar bien, adaptarme cuando cambia el plan y llegar hasta el final.</span><span lang="en">When I close the laptop, I head for the mountains. I do multi-day <strong>bikepacking</strong> trips with everything I need in the panniers, hike above the clouds and, every now and then, take off in a <strong>microlight</strong>. I look for the same things as at work: plan well, adapt when the plan changes and see it through to the end.</span></p>
+      <ul class="tags hobbies"><li>bikepacking</li><li><span lang="es">montaña y senderismo</span><span lang="en">mountains &amp; hiking</span></li><li><span lang="es">vuelo en ultraligero</span><span lang="en">microlight flying</span></li><li><span lang="es">rutas de varios días</span><span lang="en">multi-day trips</span></li></ul>
+    </div>
+    <div class="gallery">
+      <figure class="g-a">
+        <img src="img/aventuras/bikepacking-puerto.jpg" width="900" height="1200" loading="lazy" decoding="async" alt="Gonzalo junto a su bicicleta cargada con alforjas en un mirador de montaña" data-alt-es="Gonzalo junto a su bicicleta cargada con alforjas en un mirador de montaña" data-alt-en="Gonzalo next to his bike loaded with panniers at a mountain viewpoint">
+        <figcaption><b>bikepacking</b><span lang="es">Puerto coronado con las alforjas cargadas</span><span lang="en">Summit reached with fully loaded panniers</span></figcaption>
+      </figure>
+      <figure class="g-t">
+        <img src="img/aventuras/teide-mar-de-nubes.jpg" width="1400" height="746" loading="lazy" decoding="async" alt="Gonzalo de espaldas contemplando el Teide sobre el mar de nubes" data-alt-es="Gonzalo de espaldas contemplando el Teide sobre el mar de nubes" data-alt-en="Gonzalo, seen from behind, looking at Mount Teide above the sea of clouds">
+        <figcaption><b><span lang="es">senderismo</span><span lang="en">hiking</span></b><span lang="es">El Teide sobre el mar de nubes, Tenerife</span><span lang="en">Mount Teide above the sea of clouds, Tenerife</span></figcaption>
+      </figure>
+      <figure class="g-c">
+        <img src="img/aventuras/ultraligero.jpg" width="900" height="1600" loading="lazy" decoding="async" alt="Gonzalo sentado en un ultraligero pendular antes de despegar" data-alt-es="Gonzalo sentado en un ultraligero pendular antes de despegar" data-alt-en="Gonzalo sitting in a weight-shift microlight before take-off">
+        <figcaption><b><span lang="es">vuelo</span><span lang="en">flying</span></b><span lang="es">Preparando el despegue en ultraligero</span><span lang="en">Getting ready to take off in a microlight</span></figcaption>
+      </figure>
+      <figure class="g-b">
+        <img src="img/aventuras/bikepacking-niebla.jpg" width="900" height="1200" loading="lazy" decoding="async" alt="Gonzalo con su bicicleta entre helechos frente a un valle con niebla" data-alt-es="Gonzalo con su bicicleta entre helechos frente a un valle con niebla" data-alt-en="Gonzalo with his bike among ferns facing a misty valley">
+        <figcaption><b>bikepacking</b><span lang="es">Entre helechos y niebla, rumbo al siguiente valle</span><span lang="en">Through ferns and fog, heading for the next valley</span></figcaption>
+      </figure>
+      <div class="g-q card">
+        <p class="ot-cmd"><span class="u">admin</span>:<span class="p">~</span>$ cat <span lang="es">lecciones.txt</span><span lang="en">lessons.txt</span></p>
+        <ul class="lessons">
+          <li><span lang="es">Planifica la ruta, pero lleva un plan B.</span><span lang="en">Plan the route, but carry a plan B.</span></li>
+          <li><span lang="es">El desnivel se sube a tu ritmo.</span><span lang="en">You climb at your own pace.</span></li>
+          <li><span lang="es">Las mejores vistas llegan después de la parte dura.</span><span lang="en">The best views come after the hard part.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CONTACTO ============ -->
   <section id="contacto">
     <div class="card contact-card">
@@ -771,7 +843,7 @@ window.__cvAnimOK=true;
   function lang(){return root.lang==='en'?'en':'es';}
 
   /* ===== Animación de arranque: escribe "whoami", log de carga y aparición en cascada ===== */
-  var REVEAL='.hero-out > :not(.boot), main section .sec-title, .pgroup-title, .sec-note, .prose p, .skill, .job, .ai-col, .filters, .project, .cert, .edu, .langs, .contact-card';
+  var REVEAL='.hero-out > :not(.boot), main section .sec-title, .pgroup-title, .sec-note, .prose p, .skill, .job, .ai-col, .filters, .project, .cert, .edu, .langs, .contact-card, .ot-intro, .gallery > *';
   var BOOT={
     es:[['cargando','perfil.json'],['cargando','experiencia/ · 5 puestos'],['verificando','certificaciones · 7'],['compilando','cv … listo']],
     en:[['loading','profile.json'],['loading','experience/ · 5 roles'],['verifying','certifications · 7'],['compiling','cv … done']]
@@ -888,6 +960,7 @@ window.__cvAnimOK=true;
     langButtons.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-lang')===l));});
     document.querySelectorAll('[data-aria-'+l+']').forEach(function(el){el.setAttribute('aria-label',el.getAttribute('data-aria-'+l));});
     document.querySelectorAll('[data-title-'+l+']').forEach(function(el){el.title=el.getAttribute('data-title-'+l);});
+    document.querySelectorAll('[data-alt-'+l+']').forEach(function(el){el.alt=el.getAttribute('data-alt-'+l);});
   }
   applyLang(lang());
   langButtons.forEach(function(b){
